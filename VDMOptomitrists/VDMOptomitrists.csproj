@@ -1,0 +1,84 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <RazorLangVersion>3.0</RazorLangVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="wwwroot\css\bootstrap\**" />
+    <Compile Remove="wwwroot\StaticAssets\**" />
+    <Content Remove="wwwroot\css\bootstrap\**" />
+    <Content Remove="wwwroot\StaticAssets\**" />
+    <EmbeddedResource Remove="wwwroot\css\bootstrap\**" />
+    <EmbeddedResource Remove="wwwroot\StaticAssets\**" />
+    <None Remove="wwwroot\css\bootstrap\**" />
+    <None Remove="wwwroot\StaticAssets\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="wwwroot\images\About-Background.jpg" />
+    <Content Remove="wwwroot\images\Background.jpg" />
+    <Content Remove="wwwroot\images\banner1.jpg" />
+    <Content Remove="wwwroot\images\offer-1.jpg" />
+    <Content Remove="wwwroot\images\pens-advert.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Styles\site.css" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Blazorise.Bootstrap" Version="0.9.1.2" />
+    <PackageReference Include="blazorise.icons.fontawesome" Version="0.9.1.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="3.2.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Build" Version="3.2.1" PrivateAssets="all" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="3.2.1" PrivateAssets="all" />
+    <PackageReference Include="System.Net.Http.Json" Version="3.2.0" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <StaticAssets Remove="gulpfile.js" />
+    <StaticAssets Remove="package.json" />
+    <StaticAssets Remove="Styles\site.css" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Styles\site.css" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="StaticAssets\Background.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="StaticAssets\banner1.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="StaticAssets\offer-1.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="StaticAssets\pens-advert.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\images\About-Background.jpg" />
+    <None Include="wwwroot\images\Background.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="wwwroot\images\banner1.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="wwwroot\images\logo-150.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="wwwroot\images\offer-1.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="wwwroot\images\pens-advert.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+</Project>

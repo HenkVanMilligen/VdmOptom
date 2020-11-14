@@ -1,0 +1,78 @@
+﻿@using VDMOptomitrists.Components.NavMenu
+@using VDMOptomitrists.ViewModels.NavMenu
+
+@{
+    var menuVisibleClass = _menuVisible ? "" : "hidden";
+    var menuClosedClass = _menuVisible ? "hidden" : "";
+}
+<div class="bg-gray-900 ">
+    <div class="flex justify-between px-8 py-4">
+        <img class="" src="images/logo-150.jpg" alt="Logo" />
+        @* <div class="bg-red-500 pb-11/12 " >
+            
+        </div> *@
+          
+
+        <div class="align-top">
+            <button @onclick="ToggleMenu" class="focus:outline-none md:hidden">
+
+                <div class="@($"{ menuClosedClass } ")">
+                    <Icon Name="Blazorise.Icons.FontAwesome.FontAwesomeIcons.Bars" Class="text-white" />
+                </div>
+                <div class="@($"{ menuVisibleClass }")">
+                    <Icon Name="@("fa-times")" Class="text-white" />
+                </div>
+            </button>
+        </div>
+    </div>
+
+    <div class="py-4 flex flex-col">
+        <ul class="@($"flex flex-col { menuVisibleClass } mr-2 bg-gray-100  md:space-x-4 md:bg-transparent ") ">
+            <MenuButton ButtonType="@ViewModels.NavButtonType.NavLinkMenuItem"
+                        ButtonModel="@(new LinkModel("/", "HOME" ))" />
+
+            <MenuButton ButtonType="@ViewModels.NavButtonType.DropdownMenuItem"
+                        ButtonModel="@(new LinkModel("", "ABOUT"))"
+                        NavMenuSubLinks="@aboutLinks" />
+
+            <MenuButton ButtonType="@ViewModels.NavButtonType.NavLinkMenuItem"
+                        ButtonModel="@(new LinkModel("/KidsVision", "KIDS VISION" ))" />
+
+            <MenuButton ButtonType="@ViewModels.NavButtonType.NavLinkMenuItem"
+                        ButtonModel="@(new LinkModel("/Promotions", "PROMOTIONS" ))" />
+
+            <MenuButton ButtonType="@ViewModels.NavButtonType.DropdownMenuItem"
+                        ButtonModel="@(new LinkModel("", "FORMS"))"
+                        NavMenuSubLinks="@formsLinks" />
+
+            <MenuButton ButtonType="@ViewModels.NavButtonType.NavLinkMenuItem"
+                        ButtonModel="@(new LinkModel("/ContactUs", "CONTACT US" ))" />
+
+            <MenuButton ButtonType="@ViewModels.NavButtonType.NavLinkMenuItem"
+                        ButtonModel="@(new LinkModel("/Blog", "BLOG" ))" />
+        </ul>
+    </div>
+</div>
+
+@code {
+    private bool _menuVisible = false;
+
+    private List<LinkModel> aboutLinks = new List<LinkModel>
+{
+            new LinkModel("/MeetTheTeam", "Meet The Team")
+            
+    };
+
+    private List<LinkModel> formsLinks = new List<LinkModel>
+{
+            new LinkModel("/PatientForms", "Patient Forms")
+
+    };
+
+    private void ToggleMenu()
+    {
+        _menuVisible = !_menuVisible;
+
+    }
+
+}

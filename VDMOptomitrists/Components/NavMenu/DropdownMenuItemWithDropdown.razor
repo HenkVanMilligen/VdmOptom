@@ -1,0 +1,43 @@
+﻿@using ViewModels.NavMenu
+
+@{
+    var expandedClass = _expanded ? "" : "hidden";
+    var hoverClass = _hover ? "" : "hidden";
+}
+
+<!--Dropdown Button -->
+<button class="flex justify-between items-center md:hidden focus:outline-none py-2 px-4 border font-semibold hover:bg-gray-200 " @onclick="Toggle">
+    @ButtonModel.LinkName
+    <Icon Class="px-4" Name="Blazorise.Icons.FontAwesome.FontAwesomeIcons.ChevronDown" />
+</button>
+
+<!--Dropdown List-->
+<ul class="@($"{ expandedClass } border px-6 py-2 hover:bg-gray-200 rounded")">
+    @foreach (var link in NavMenuLinks)
+    {
+        <NavLink class="font-semibold" href="@(link.Href)">- @(link.LinkName)</NavLink>
+    }
+
+</ul>
+
+
+@code {
+    [Parameter]
+    public LinkModel ButtonModel { get; set; }
+
+    [Parameter]
+    public List<LinkModel> NavMenuLinks { get; set; }
+
+    private bool _expanded = false;
+    private bool _hover = false;
+    private void Hover()
+    {
+        _hover = true;
+        Console.WriteLine("hover");
+    }
+
+    private void Toggle()
+    {
+        _expanded = !_expanded;
+    }
+}
