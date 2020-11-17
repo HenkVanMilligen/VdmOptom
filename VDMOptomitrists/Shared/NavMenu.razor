@@ -5,16 +5,16 @@
     var menuVisibleClass = _menuVisible ? "" : "hidden";
     var menuClosedClass = _menuVisible ? "hidden" : "";
 }
-<div class="bg-gray-900 ">
+<div class="bg-gray-900 h-48">
     <div class="flex justify-between px-8 py-4">
         <img class="" src="images/logo-150.jpg" alt="Logo" />
         @* <div class="bg-red-500 pb-11/12 " >
-            
-        </div> *@
-          
 
-        <div class="align-top">
-            <button @onclick="ToggleMenu" class="focus:outline-none md:hidden">
+            </div> *@
+
+
+        <div class="align-top  md:hidden">
+            <button @onclick="ToggleMenu" class="focus:outline-none">
 
                 <div class="@($"{ menuClosedClass } ")">
                     <Icon Name="Blazorise.Icons.FontAwesome.FontAwesomeIcons.Bars" Class="text-white" />
@@ -25,47 +25,46 @@
             </button>
         </div>
     </div>
-
-    <div class="py-4 flex flex-col">
-        <ul class="@($"flex flex-col { menuVisibleClass } mr-2 bg-gray-100  md:space-x-4 md:bg-transparent ") ">
+    <div>
+        <ul class="flex flex-col bg-gray-100  md:space-x-4 md:bg-transparent  @($"{ menuVisibleClass }  ") ">
             <MenuButton ButtonType="@ViewModels.NavButtonType.NavLinkMenuItem"
-                        ButtonModel="@(new LinkModel("/", "HOME" ))" />
+                ButtonModel="@(new LinkModel("/", "home" ))" />
 
             <MenuButton ButtonType="@ViewModels.NavButtonType.DropdownMenuItem"
-                        ButtonModel="@(new LinkModel("", "ABOUT"))"
-                        NavMenuSubLinks="@aboutLinks" />
+                ButtonModel="@(new LinkModel("", "about"))" NavMenuSubLinks="@aboutLinks" />
 
             <MenuButton ButtonType="@ViewModels.NavButtonType.NavLinkMenuItem"
-                        ButtonModel="@(new LinkModel("/KidsVision", "KIDS VISION" ))" />
+                ButtonModel="@(new LinkModel("/KidsVision", "kids vision" ))" />
 
             <MenuButton ButtonType="@ViewModels.NavButtonType.NavLinkMenuItem"
-                        ButtonModel="@(new LinkModel("/Promotions", "PROMOTIONS" ))" />
+                ButtonModel="@(new LinkModel("/Promotions", "promotions" ))" />
 
             <MenuButton ButtonType="@ViewModels.NavButtonType.DropdownMenuItem"
-                        ButtonModel="@(new LinkModel("", "FORMS"))"
-                        NavMenuSubLinks="@formsLinks" />
+                ButtonModel="@(new LinkModel("", "forms"))" NavMenuSubLinks="@formsLinks" />
 
             <MenuButton ButtonType="@ViewModels.NavButtonType.NavLinkMenuItem"
-                        ButtonModel="@(new LinkModel("/ContactUs", "CONTACT US" ))" />
+                ButtonModel="@(new LinkModel("/ContactUs", "contact us" ))" />
 
             <MenuButton ButtonType="@ViewModels.NavButtonType.NavLinkMenuItem"
-                        ButtonModel="@(new LinkModel("/Blog", "BLOG" ))" />
+                ButtonModel="@(new LinkModel("/Blog", "blog" ))" />
         </ul>
     </div>
 </div>
+
+
 
 @code {
     private bool _menuVisible = false;
 
     private List<LinkModel> aboutLinks = new List<LinkModel>
-{
-            new LinkModel("/MeetTheTeam", "Meet The Team")
-            
+    {
+        new LinkModel("/MeetTheTeam", "Meet The Team")
+
     };
 
     private List<LinkModel> formsLinks = new List<LinkModel>
-{
-            new LinkModel("/PatientForms", "Patient Forms")
+    {
+        new LinkModel("/PatientForms", "Patient Forms")
 
     };
 

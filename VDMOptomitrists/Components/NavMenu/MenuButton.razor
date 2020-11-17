@@ -1,30 +1,25 @@
-﻿@using ViewModels
+﻿@using System.Globalization
+@using ViewModels
 @using ViewModels.NavMenu
 
-<div class="flex">
-    <div >
-        @switch (ButtonType)
-        {
-            case NavButtonType.NavLinkMenuItem:
-                <NavLink class="flex justify-between py-2 px-4 hover:bg-gray-200 font-semibold text-black md:border-none 
-                md:bg-vdm-menugreen md:hover:bg-gray-900 md:text-white" href="@ButtonModel.Href">@ButtonModel.LinkName</NavLink>
-                break;
-            case NavButtonType.DropdownMenuItem:                
-                <DropdownMenuItemWithDropdown ButtonModel="@ButtonModel" NavMenuLinks="@NavMenuSubLinks" />
-                <HoverDropdownMenuItem ButtonModel="@ButtonModel" NavMenuLinks="@NavMenuSubLinks" />
-                break;
-            default:
-                break;
-        }
-    </div>
-    <div class="bg-gray-900">
-        
-    </div>
+<div class="flex flex-col items-stretch border-b capitalize md:uppercase font-body text-gray-800">
+    @switch (ButtonType)
+    {
+        case NavButtonType.NavLinkMenuItem:
+            <NavLink class="flex items-center h-8 py-2 px-4  hover:bg-gray-200  md:border-none 
+                        md:bg-vdm-menugreen md:hover:bg-gray-900 md:text-white" href="@ButtonModel.Href">@ButtonModel.LinkName
+            </NavLink>
+            break;
+        case NavButtonType.DropdownMenuItem:
+            <DropdownMenuItemWithDropdown ButtonModel="@ButtonModel" NavMenuLinks="@NavMenuSubLinks" />
+            <HoverDropdownMenuItem ButtonModel="@ButtonModel" NavMenuLinks="@NavMenuSubLinks" />
+            break;
+        default:
+            break;
+    }
 </div>
 
 @code {
-
-
     [Parameter]
     public NavButtonType ButtonType { get; set; }
 
