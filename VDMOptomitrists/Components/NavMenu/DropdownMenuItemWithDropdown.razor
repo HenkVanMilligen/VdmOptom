@@ -6,19 +6,36 @@
 }
 
 <!--Dropdown Button -->
-<button class="flex justify-between items-center h-8 py-2 px-4 md:hidden focus:outline-none capitalize md:uppercase hover:bg-gray-200 " @onclick="Toggle">
-    @ButtonModel.LinkName
-    <Icon Class="px-4" Name="Blazorise.Icons.FontAwesome.FontAwesomeIcons.ChevronDown" />
-</button>
-
+<div class="block lg:hidden h-8 px-6 py-1  text-gray-800 hover:bg-gray-200 ">
+        <button class="flex justify-between w-full focus:outline-none capitalize lg:uppercase " @onclick="Toggle">
+            <span>@ButtonModel.LinkName</span>
+            <Icon Class="px-4" Name="Blazorise.Icons.FontAwesome.FontAwesomeIcons.ChevronDown" />
+        </button>
+</div>
 <!--Dropdown List-->
-<ul class="flex items-center b h-8 px-6 border-t hover:bg-gray-200 rounded @($" { expandedClass }  ")">
+<div class="block lg:hidden h-8 px-8 py-1 text-gray-800 hover:bg-gray-200 rounded @($" { expandedClass }  ")">
     @foreach (var link in NavMenuLinks)
     {
-        <NavLink href="@(link.Href)">- @(link.LinkName)</NavLink>
+        <NavLink  href="@(link.Href)">- @(link.LinkName)</NavLink>
     }
 
-</ul>
+</div>
+
+
+    @* <button class="flex justify-between items-center h-8 py-2 px-4 md:hidden focus:outline-none capitalize md:uppercase
+        hover:bg-gray-200 " @onclick="Toggle">
+        @ButtonModel.LinkName
+        <Icon Class="px-4" Name="Blazorise.Icons.FontAwesome.FontAwesomeIcons.ChevronDown" />
+        </button>
+
+        <!--Dropdown List-->
+        <ul class="flex items-center b h-8 px-6 border-t hover:bg-gray-200 rounded @($" { expandedClass } ")">
+        @foreach (var link in NavMenuLinks)
+        {
+        <NavLink href="@(link.Href)">- @(link.LinkName)</NavLink>
+        }
+
+        </ul> *@
 
 
 @code {

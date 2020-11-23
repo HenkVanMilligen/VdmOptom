@@ -2,22 +2,20 @@
 @using VDMOptomitrists.ViewModels.NavMenu
 
 @{
-    var menuVisibleClass = _menuVisible ? "" : "hidden";
-    var menuClosedClass = _menuVisible ? "hidden" : "";
+    var menuVisibleClass = _menuVisible ? "block" : "hidden";
+    var menuClosedClass = _menuVisible ? "hidden" : "block";
 }
-<div class="bg-gray-900 h-48">
-    <div class="flex justify-between px-8 py-4">
-        <img class="" src="images/logo-150.jpg" alt="Logo" />
-        @* <div class="bg-red-500 pb-11/12 " >
 
-            </div> *@
-
-
-        <div class="align-top  md:hidden">
-            <button @onclick="ToggleMenu" class="focus:outline-none">
-
+<header class="bg-gray-900 bg-cover bg-no-repeat xl:flex lg:h-112 lg:bg-homepage-header">
+    <div class="h-48 flex justify-between items-start px-10 py-8">
+        <div>
+            <img class="" src="images/logo-150.jpg" alt="Logo" />
+        </div>
+        <div class="lg:hidden text-white">
+            <button @onclick="ToggleMenu" class="focus:outline-none ">
+    
                 <div class="@($"{ menuClosedClass } ")">
-                    <Icon Name="Blazorise.Icons.FontAwesome.FontAwesomeIcons.Bars" Class="text-white" />
+                    <Icon Name="Blazorise.Icons.FontAwesome.FontAwesomeIcons.Bars" Class="text-white hover:text-gray-500" />
                 </div>
                 <div class="@($"{ menuVisibleClass }")">
                     <Icon Name="@("fa-times")" Class="text-white" />
@@ -25,31 +23,73 @@
             </button>
         </div>
     </div>
-    <div>
-        <ul class="flex flex-col bg-gray-100  md:space-x-4 md:bg-transparent  @($"{ menuVisibleClass }  ") ">
-            <MenuButton ButtonType="@ViewModels.NavButtonType.NavLinkMenuItem"
-                ButtonModel="@(new LinkModel("/", "home" ))" />
+    <div class="bg-gray-100 lg:bg-transparent lg:flex lg:flex-wrap lg:px-10 lg:py-8  @($"{ menuVisibleClass }")">
+        <MenuButton ButtonType="@ViewModels.NavButtonType.NavLinkMenuItem"
+            ButtonModel="@(new LinkModel("/", "home" ))" />
 
-            <MenuButton ButtonType="@ViewModels.NavButtonType.DropdownMenuItem"
-                ButtonModel="@(new LinkModel("", "about"))" NavMenuSubLinks="@aboutLinks" />
+        <MenuButton ButtonType="@ViewModels.NavButtonType.DropdownMenuItem" ButtonModel="@(new LinkModel("/about", "about us"))"
+            NavMenuSubLinks="@aboutLinks" />
 
-            <MenuButton ButtonType="@ViewModels.NavButtonType.NavLinkMenuItem"
-                ButtonModel="@(new LinkModel("/KidsVision", "kids vision" ))" />
+        <MenuButton ButtonType="@ViewModels.NavButtonType.NavLinkMenuItem"
+            ButtonModel="@(new LinkModel("/KidsVision", "kids vision" ))" />
 
-            <MenuButton ButtonType="@ViewModels.NavButtonType.NavLinkMenuItem"
-                ButtonModel="@(new LinkModel("/Promotions", "promotions" ))" />
+        <MenuButton ButtonType="@ViewModels.NavButtonType.NavLinkMenuItem"
+            ButtonModel="@(new LinkModel("/Promotions", "promotions" ))" />
 
-            <MenuButton ButtonType="@ViewModels.NavButtonType.DropdownMenuItem"
-                ButtonModel="@(new LinkModel("", "forms"))" NavMenuSubLinks="@formsLinks" />
+        <MenuButton ButtonType="@ViewModels.NavButtonType.DropdownMenuItem" ButtonModel="@(new LinkModel("/forms", "forms"))"
+            NavMenuSubLinks="@formsLinks" />
 
-            <MenuButton ButtonType="@ViewModels.NavButtonType.NavLinkMenuItem"
-                ButtonModel="@(new LinkModel("/ContactUs", "contact us" ))" />
+        <MenuButton ButtonType="@ViewModels.NavButtonType.NavLinkMenuItem"
+            ButtonModel="@(new LinkModel("/ContactUs", "contact us" ))" />
 
-            <MenuButton ButtonType="@ViewModels.NavButtonType.NavLinkMenuItem"
-                ButtonModel="@(new LinkModel("/Blog", "blog" ))" />
-        </ul>
+        <MenuButton ButtonType="@ViewModels.NavButtonType.NavLinkMenuItem"
+            ButtonModel="@(new LinkModel("/Blog", "blog" ))" />
     </div>
-</div>
+</header>
+@* <div class="flex flex-col md:flex-row bg-gray-900 md:bg-transparent ">
+    <div class="flex justify-between px-8 py-4 md:justify-center">
+
+    <img class="" src="images/logo-150.jpg" alt="Logo" />
+
+
+
+    <div class="align-top md:hidden">
+    <button @onclick="ToggleMenu" class="focus:outline-none">
+
+    <div class="@($"{ menuClosedClass } ")">
+    <Icon Name="Blazorise.Icons.FontAwesome.FontAwesomeIcons.Bars" Class="text-white" />
+    </div>
+    <div class="@($"{ menuVisibleClass }")">
+    <Icon Name="@("fa-times")" Class="text-white" />
+    </div>
+    </button>
+    </div>
+    </div>
+    <div>
+    <ul class="flex flex-col md:flex-row bg-gray-100 md:space-x-4 md:bg-transparent @($"{ menuVisibleClass }")">
+    <MenuButton ButtonType="@ViewModels.NavButtonType.NavLinkMenuItem"
+    ButtonModel="@(new LinkModel("/", "home" ))" />
+
+    <MenuButton ButtonType="@ViewModels.NavButtonType.DropdownMenuItem"
+    ButtonModel="@(new LinkModel("", "about"))" NavMenuSubLinks="@aboutLinks" />
+
+    <MenuButton ButtonType="@ViewModels.NavButtonType.NavLinkMenuItem"
+    ButtonModel="@(new LinkModel("/KidsVision", "kids vision" ))" />
+
+    <MenuButton ButtonType="@ViewModels.NavButtonType.NavLinkMenuItem"
+    ButtonModel="@(new LinkModel("/Promotions", "promotions" ))" />
+
+    <MenuButton ButtonType="@ViewModels.NavButtonType.DropdownMenuItem"
+    ButtonModel="@(new LinkModel("", "forms"))" NavMenuSubLinks="@formsLinks" />
+
+    <MenuButton ButtonType="@ViewModels.NavButtonType.NavLinkMenuItem"
+    ButtonModel="@(new LinkModel("/ContactUs", "contact us" ))" />
+
+    <MenuButton ButtonType="@ViewModels.NavButtonType.NavLinkMenuItem"
+    ButtonModel="@(new LinkModel("/Blog", "blog" ))" />
+    </ul>
+    </div>
+    </div> *@
 
 
 

@@ -1,26 +1,32 @@
 ﻿@using ViewModels.NavMenu
 
-<div class="hidden md:inline-block group ">
-    <button class="h-full text-white outline-none focus:outline-none border px-3 py-1 bg-vdm-menugreen rounded-sm min-w-32 hover:bg-gray-900" >
-        @*<span class="pr-1 font-semibold flex-1">@ButtonModel.</span>*@
-        <NavLink class="pr-1flex-1" href="@ButtonModel.Href">@ButtonModel.LinkName</NavLink>
-                <span>
-                    <svg class="fill-current h-4 w-4 transform group-hover:-rotate-180 transition duration-150 ease-in-out"
-                         xmlns="http://www.w3.org/2000/svg"
-                         viewBox="0 0 20 20">
-                        <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
-                    </svg>
-                </span>
-            </button>
-    <ul class="bg-white mt-2 border rounded-sm transform scale-0 group-hover:scale-100 absolute transition duration-150 ease-in-out origin-top ">
+ @* <div class="hidden lg:block">
+   <button class="capitalize lg:uppercase lg:flex">
+        <NavLink class="" href="@ButtonModel.Href">@ButtonModel.LinkName</NavLink>
+    </button>
+    <ul class=" ">
         @foreach (var link in NavMenuLinks)
         {
             <NavLink class="rounded-sm px-3 py-1 hover:bg-gray-100" href="@(link.Href)">- @(link.LinkName)</NavLink>
         }
-    </ul>
-</div>
+        </ul>
+    </div> *@
 
-@code {
+    <div class="hidden lg:block group">
+        <button class="h-8 lg:h-10  text-white capitalize lg:uppercase outline-none focus:outline-none px-3 py-1 bg-vdm-menugreen 
+            hover:bg-gray-900 lg:border-b-4 lg:border-gray-900">
+            <NavLink class="pr-1" href="@ButtonModel.Href">@ButtonModel.LinkName</NavLink>
+        </button>
+        <div class="mt-2 flex flex-col transform scale-0 group-hover:scale-100 absolute transition duration-150
+            ease-in-out origin-top ">
+            @foreach (var link in NavMenuLinks)
+        {
+            <NavLink class="bg-gray-100 h-12  px-3 py-1 mb-6 self-center lg:border-t-4 lg:border-gray-900   hover:bg-gray-100" href="@(link.Href)">@(link.LinkName)</NavLink>
+        }
+        </div>
+    </div>
+
+    @code {
     [Parameter]
     public LinkModel ButtonModel { get; set; }
 
@@ -40,19 +46,19 @@
     /* since nested groupes are not supported we have to use
        regular css for the nested dropdowns
     */
-    li > ul {
+    li>ul {
         transform: translatex(100%) scale(0)
     }
 
-    li:hover > ul {
+    li:hover>ul {
         transform: translatex(101%) scale(1)
     }
 
-    li > button svg {
+    li>button svg {
         transform: rotate(-90deg)
     }
 
-    li:hover > button svg {
+    li:hover>button svg {
         transform: rotate(-270deg)
     }
 
